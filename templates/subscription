@@ -1,0 +1,24 @@
+{{ define "subscription"}}
+{
+  "subject": {
+    "entities": [
+      {
+        "id": "{{ .Entity.EntityID }}",
+        "type": "{{ .Entity.EntityType }}"
+      }
+    ],
+    "condition": {
+      "attrs": [
+        "dateObserved"
+      ]
+    }
+	},
+  "notification": {
+    "http": {
+      "url": "{{ .Config.Cygnus }}/notify"
+    },
+	"attrsFormat": "legacy",
+    "attrs": []
+  }
+}
+{{ end }}
